@@ -1,0 +1,80 @@
+{
+  "services": [
+    {
+      "name": "mlops-task-3_cecb07-scheduler-1",
+      "image": "mlops-task-3_cecb07/airflow:latest",
+      "status": "running",
+      "health": null,
+      "networks": [
+        "mlops-task-3_cecb07_airflow"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "mlops-task-3_cecb07_airflow_logs",
+          "destination": "/usr/local/airflow/logs"
+        }
+      ]
+    },
+    {
+      "name": "mlops-task-3_cecb07-mongodb-1",
+      "image": "task3-mongodb:1.0.0",
+      "status": "running",
+      "health": "healthy",
+      "networks": [
+        "mlops-task-3_cecb07_airflow"
+      ],
+      "mounts": [
+        {
+          "type": "volume",
+          "name": "mlops-task-3_cecb07_mongodb_config",
+          "destination": "/data/configdb"
+        },
+        {
+          "type": "volume",
+          "name": "mlops-task-3_cecb07_mongodb_data",
+          "destination": "/data/db"
+        }
+      ]
+    },
+    {
+      "name": "mlops-task-3_cecb07-mongo-express-1",
+      "image": "task3-mongo-express:1.0.0",
+      "status": "running",
+      "health": "healthy",
+      "networks": [
+        "mlops-task-3_cecb07_airflow"
+      ],
+      "mounts": []
+    }
+  ],
+  "image_metadata": [
+    {
+      "image": "mlops-task-3_cecb07/airflow:latest",
+      "labels": {
+        "org.opencontainers.image.authors": "Hanzala",
+        "org.opencontainers.image.description": "Daily Frankfurter exchange rates to MongoDB with Airflow and named XComs",
+        "org.opencontainers.image.title": "Task 3 Currency ETL",
+        "org.opencontainers.image.version": "1.0.0"
+      }
+    },
+    {
+      "image": "task3-mongodb:1.0.0",
+      "labels": {
+        "org.opencontainers.image.authors": "Hanzala",
+        "org.opencontainers.image.description": "Persistent currency exchange-rate storage",
+        "org.opencontainers.image.title": "Task 3 MongoDB",
+        "org.opencontainers.image.version": "1.0.0"
+      }
+    },
+    {
+      "image": "task3-mongo-express:1.0.0",
+      "labels": {
+        "org.opencontainers.image.authors": "Hanzala",
+        "org.opencontainers.image.description": "Local web administration for the currency ETL database",
+        "org.opencontainers.image.title": "Task 3 Mongo Express",
+        "org.opencontainers.image.version": "1.0.0"
+      }
+    }
+  ]
+}

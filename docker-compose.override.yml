@@ -1,0 +1,75 @@
+# Astro generates the Airflow/Postgres services and the shared airflow bridge.
+x-etl-environment: &etl-environment
+  MONGODB_URI: mongodb://${MONGO_ROOT_USERNAME:?Run python3 scripts/setup_env.py}:${MONGO_ROOT_PASSWORD:?Run python3 scripts/setup_env.py}@mongodb:27017/?authSource=admin
+  MONGODB_DATABASE: ${MONGODB_DATABASE:-currency_etl}
+  MONGODB_COLLECTION: ${MONGODB_COLLECTION:-exchange_rates}
+
+services:
+  scheduler:
+    environment: *etl-environment
+    depends_on:
+      mongodb:
+        condition: service_healthy
+  api-server:
+    environment: *etl-environment
+  dag-processor:
+    environment: *etl-environment
+  triggerer:
+    environment: *etl-environment
+
+  mongodb:
+    build: ./docker/mongodb
+    image: task3-mongodb:1.0.0
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME:?Run python3 scripts/setup_env.py}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD:?Run python3 scripts/setup_env.py}
+    ports:
+      - "127.0.0.1:27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    networks:
+      - airflow
+    healthcheck:
+      test: ["CMD-SHELL", "mongosh --quiet --username \"$$MONGO_INITDB_ROOT_USERNAME\" --password \"$$MONGO_INITDB_ROOT_PASSWORD\" --authenticationDatabase admin --eval 'db.adminCommand({ping: 1}).ok' | grep 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  mongo-express:
+    build: ./docker/mongo-express
+    image: task3-mongo-express:1.0.0
+    restart: unless-stopped
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://${MONGO_ROOT_USERNAME}:${MONGO_ROOT_PASSWORD}@mongodb:27017/?authSource=admin
+      ME_CONFIG_BASICAUTH_ENABLED: "true"
+      ME_CONFIG_BASICAUTH_USERNAME: ${MONGO_EXPRESS_USERNAME:?Run python3 scripts/setup_env.py}
+      ME_CONFIG_BASICAUTH_PASSWORD: ${MONGO_EXPRESS_PASSWORD:?Run python3 scripts/setup_env.py}
+    ports:
+      - "127.0.0.1:${MONGO_EXPRESS_PORT:-8082}:8081"
+    networks:
+      - airflow
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:8081/', r => process.exit([200,401].includes(r.statusCode) ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+
+networks:
+  airflow:
+    driver: bridge
+    labels:
+      task: "task-3-currency-etl"
+
+volumes:
+  mongodb_data:
+    labels:
+      task: "task-3-currency-etl"
+  mongodb_config:
+    labels:
+      task: "task-3-currency-etl"

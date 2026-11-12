@@ -1,0 +1,19 @@
+{
+  "persistence_after_mongodb_restart": "PASS",
+  "records_before": 3,
+  "records_after": 3,
+  "documents_unchanged": true,
+  "duplicate_groups": 0,
+  "unique_index": true,
+  "second_run_load": {
+    "matched": 3,
+    "database": "currency_etl",
+    "modified": 3,
+    "upserted": 0,
+    "processed": 3,
+    "collection": "exchange_rates"
+  },
+  "mongo_express_unauthenticated_status": 401,
+  "mongo_express_authenticated_status": 200,
+  "mongo_express_database_visible": true
+}

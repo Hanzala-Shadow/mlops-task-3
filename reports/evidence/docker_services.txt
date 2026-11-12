@@ -1,0 +1,8 @@
+NAMES                                 STATUS                        PORTS
+mlops-task-3_cecb07-scheduler-1       Up About a minute
+mlops-task-3_cecb07-mongo-express-1   Up About a minute (healthy)   127.0.0.1:8082->8081/tcp
+mlops-task-3_cecb07-dag-processor-1   Up About a minute
+mlops-task-3_cecb07-api-server-1      Up About a minute             127.0.0.1:8080->8080/tcp
+mlops-task-3_cecb07-triggerer-1       Up About a minute
+mlops-task-3_cecb07-mongodb-1         Up About a minute (healthy)   127.0.0.1:27017->27017/tcp
+mlops-task-3_cecb07-postgres-1        Up 3 minutes                  127.0.0.1:5432->5432/tcp

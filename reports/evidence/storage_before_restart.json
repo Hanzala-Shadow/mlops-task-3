@@ -1,0 +1,31 @@
+{
+  "count": 3,
+  "duplicate_groups": 0,
+  "unique_index": true,
+  "documents": [
+    {
+      "base_currency": "EUR",
+      "rate_date": "2026-11-12",
+      "target_currency": "GBP",
+      "exchange_rate": 0.83644,
+      "retrieved_at": "2026-11-12T04:13:25+00:00",
+      "source": "Frankfurter API"
+    },
+    {
+      "base_currency": "EUR",
+      "rate_date": "2026-11-12",
+      "target_currency": "JPY",
+      "exchange_rate": 177.52,
+      "retrieved_at": "2026-11-12T04:13:25+00:00",
+      "source": "Frankfurter API"
+    },
+    {
+      "base_currency": "EUR",
+      "rate_date": "2026-11-12",
+      "target_currency": "USD",
+      "exchange_rate": 1.1178,
+      "retrieved_at": "2026-11-12T04:13:25+00:00",
+      "source": "Frankfurter API"
+    }
+  ]
+}

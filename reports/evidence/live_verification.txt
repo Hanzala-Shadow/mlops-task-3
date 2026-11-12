@@ -1,0 +1,3 @@
+Run 1: task3_verification_1_1794456787 — three tasks succeeded; all three named XComs verified
+Run 2: task3_verification_2_1794456804 — three tasks succeeded; all three named XComs verified
+Evidence saved to /home/hanzala/mlops-task-3/reports/evidence/airflow_runs.json

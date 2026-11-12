@@ -1,0 +1,244 @@
+{
+  "dag_id": "currency_exchange_etl",
+  "verified_at": "2026-11-12T04:13:07.751139+00:00",
+  "runs": [
+    {
+      "run_id": "task3_verification_1_1794456787",
+      "state": "success",
+      "tasks": [
+        {
+          "task_id": "extract_currency_exchange_rates",
+          "state": "success",
+          "start_date": "2026-11-12T04:13:19.784076Z",
+          "end_date": "2026-11-12T04:13:20.137567Z"
+        },
+        {
+          "task_id": "transform_exchange_rate_data",
+          "state": "success",
+          "start_date": "2026-11-12T04:13:21.276015Z",
+          "end_date": "2026-11-12T04:13:21.832228Z"
+        },
+        {
+          "task_id": "load_data_into_mongodb",
+          "state": "success",
+          "start_date": "2026-11-12T04:13:22.431452Z",
+          "end_date": "2026-11-12T04:13:22.899944Z"
+        }
+      ],
+      "xcoms": {
+        "raw_exchange_rates": {
+          "key": "raw_exchange_rates",
+          "timestamp": "2026-11-12T04:13:20.131906Z",
+          "logical_date": "2026-11-12T04:13:07.751165Z",
+          "map_index": -1,
+          "task_id": "extract_currency_exchange_rates",
+          "dag_id": "currency_exchange_etl",
+          "run_id": "task3_verification_1_1794456787",
+          "dag_display_name": "currency_exchange_etl",
+          "task_display_name": "extract_currency_exchange_rates",
+          "run_after": "2026-11-12T04:13:07.762063Z",
+          "value": {
+            "rates": [
+              {
+                "base": "EUR",
+                "date": "2026-11-12",
+                "rate": 0.83644,
+                "quote": "GBP"
+              },
+              {
+                "base": "EUR",
+                "date": "2026-11-12",
+                "rate": 177.52,
+                "quote": "JPY"
+              },
+              {
+                "base": "EUR",
+                "date": "2026-11-12",
+                "rate": 1.1178,
+                "quote": "USD"
+              }
+            ],
+            "retrieved_at": "2026-11-12T04:13:20+00:00"
+          }
+        },
+        "transformed_exchange_rates": {
+          "key": "transformed_exchange_rates",
+          "timestamp": "2026-11-12T04:13:21.820800Z",
+          "logical_date": "2026-11-12T04:13:07.751165Z",
+          "map_index": -1,
+          "task_id": "transform_exchange_rate_data",
+          "dag_id": "currency_exchange_etl",
+          "run_id": "task3_verification_1_1794456787",
+          "dag_display_name": "currency_exchange_etl",
+          "task_display_name": "transform_exchange_rate_data",
+          "run_after": "2026-11-12T04:13:07.762063Z",
+          "value": [
+            {
+              "source": "Frankfurter API",
+              "rate_date": "2026-11-12",
+              "retrieved_at": "2026-11-12T04:13:20+00:00",
+              "base_currency": "EUR",
+              "exchange_rate": 0.83644,
+              "target_currency": "GBP"
+            },
+            {
+              "source": "Frankfurter API",
+              "rate_date": "2026-11-12",
+              "retrieved_at": "2026-11-12T04:13:20+00:00",
+              "base_currency": "EUR",
+              "exchange_rate": 177.52,
+              "target_currency": "JPY"
+            },
+            {
+              "source": "Frankfurter API",
+              "rate_date": "2026-11-12",
+              "retrieved_at": "2026-11-12T04:13:20+00:00",
+              "base_currency": "EUR",
+              "exchange_rate": 1.1178,
+              "target_currency": "USD"
+            }
+          ]
+        },
+        "mongodb_load_summary": {
+          "key": "mongodb_load_summary",
+          "timestamp": "2026-11-12T04:13:22.885028Z",
+          "logical_date": "2026-11-12T04:13:07.751165Z",
+          "map_index": -1,
+          "task_id": "load_data_into_mongodb",
+          "dag_id": "currency_exchange_etl",
+          "run_id": "task3_verification_1_1794456787",
+          "dag_display_name": "currency_exchange_etl",
+          "task_display_name": "load_data_into_mongodb",
+          "run_after": "2026-11-12T04:13:07.762063Z",
+          "value": {
+            "matched": 3,
+            "database": "currency_etl",
+            "modified": 3,
+            "upserted": 0,
+            "processed": 3,
+            "collection": "exchange_rates"
+          }
+        }
+      }
+    },
+    {
+      "run_id": "task3_verification_2_1794456804",
+      "state": "success",
+      "tasks": [
+        {
+          "task_id": "extract_currency_exchange_rates",
+          "state": "success",
+          "start_date": "2026-11-12T04:13:24.710983Z",
+          "end_date": "2026-11-12T04:13:25.115670Z"
+        },
+        {
+          "task_id": "transform_exchange_rate_data",
+          "state": "success",
+          "start_date": "2026-11-12T04:13:26.403127Z",
+          "end_date": "2026-11-12T04:13:26.700289Z"
+        },
+        {
+          "task_id": "load_data_into_mongodb",
+          "state": "success",
+          "start_date": "2026-11-12T04:13:27.613524Z",
+          "end_date": "2026-11-12T04:13:27.967960Z"
+        }
+      ],
+      "xcoms": {
+        "raw_exchange_rates": {
+          "key": "raw_exchange_rates",
+          "timestamp": "2026-11-12T04:13:25.102411Z",
+          "logical_date": "2026-11-12T04:13:24.224641Z",
+          "map_index": -1,
+          "task_id": "extract_currency_exchange_rates",
+          "dag_id": "currency_exchange_etl",
+          "run_id": "task3_verification_2_1794456804",
+          "dag_display_name": "currency_exchange_etl",
+          "task_display_name": "extract_currency_exchange_rates",
+          "run_after": "2026-11-12T04:13:24.237337Z",
+          "value": {
+            "rates": [
+              {
+                "base": "EUR",
+                "date": "2026-11-12",
+                "rate": 0.83644,
+                "quote": "GBP"
+              },
+              {
+                "base": "EUR",
+                "date": "2026-11-12",
+                "rate": 177.52,
+                "quote": "JPY"
+              },
+              {
+                "base": "EUR",
+                "date": "2026-11-12",
+                "rate": 1.1178,
+                "quote": "USD"
+              }
+            ],
+            "retrieved_at": "2026-11-12T04:13:25+00:00"
+          }
+        },
+        "transformed_exchange_rates": {
+          "key": "transformed_exchange_rates",
+          "timestamp": "2026-11-12T04:13:26.693611Z",
+          "logical_date": "2026-11-12T04:13:24.224641Z",
+          "map_index": -1,
+          "task_id": "transform_exchange_rate_data",
+          "dag_id": "currency_exchange_etl",
+          "run_id": "task3_verification_2_1794456804",
+          "dag_display_name": "currency_exchange_etl",
+          "task_display_name": "transform_exchange_rate_data",
+          "run_after": "2026-11-12T04:13:24.237337Z",
+          "value": [
+            {
+              "source": "Frankfurter API",
+              "rate_date": "2026-11-12",
+              "retrieved_at": "2026-11-12T04:13:25+00:00",
+              "base_currency": "EUR",
+              "exchange_rate": 0.83644,
+              "target_currency": "GBP"
+            },
+            {
+              "source": "Frankfurter API",
+              "rate_date": "2026-11-12",
+              "retrieved_at": "2026-11-12T04:13:25+00:00",
+              "base_currency": "EUR",
+              "exchange_rate": 177.52,
+              "target_currency": "JPY"
+            },
+            {
+              "source": "Frankfurter API",
+              "rate_date": "2026-11-12",
+              "retrieved_at": "2026-11-12T04:13:25+00:00",
+              "base_currency": "EUR",
+              "exchange_rate": 1.1178,
+              "target_currency": "USD"
+            }
+          ]
+        },
+        "mongodb_load_summary": {
+          "key": "mongodb_load_summary",
+          "timestamp": "2026-11-12T04:13:27.959725Z",
+          "logical_date": "2026-11-12T04:13:24.224641Z",
+          "map_index": -1,
+          "task_id": "load_data_into_mongodb",
+          "dag_id": "currency_exchange_etl",
+          "run_id": "task3_verification_2_1794456804",
+          "dag_display_name": "currency_exchange_etl",
+          "task_display_name": "load_data_into_mongodb",
+          "run_after": "2026-11-12T04:13:24.237337Z",
+          "value": {
+            "matched": 3,
+            "database": "currency_etl",
+            "modified": 3,
+            "upserted": 0,
+            "processed": 3,
+            "collection": "exchange_rates"
+          }
+        }
+      }
+    }
+  ]
+}
