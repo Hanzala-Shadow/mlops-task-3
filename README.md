@@ -77,6 +77,6 @@ Restart the MongoDB container, then rerun the storage check to verify persistenc
 
 ## Submission
 
-The [submission report](reports/Task_3_ETL_Report.docx) contains code and output screenshots. Actual execution evidence is in `reports/evidence/`. Repository: [Hanzala-Shadow/mlops-task-3](https://github.com/Hanzala-Shadow/mlops-task-3). This repository is private; grant your assessor access before submission.
+The [submission report](reports/Task_3_ETL_Report.docx) contains code and output screenshots. Actual execution evidence is in `reports/evidence/`. The [public GitHub repository](https://github.com/Hanzala-Shadow/mlops-task-3) contains the complete implementation, tests, Docker configuration, report, and evidence. Assessors can access these files without an invitation.
 
 Sources: [Frankfurter documentation](https://frankfurter.dev/), [Astro project development](https://www.astronomer.io/docs/astro/cli/develop-project), [Astro Runtime releases](https://www.astronomer.io/docs/runtime/runtime-release-notes).

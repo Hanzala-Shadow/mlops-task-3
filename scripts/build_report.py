@@ -121,7 +121,7 @@ paragraph("Currency exchange ETL pipeline", "Title")
 paragraph("Task 3 implementation and execution report", "Subtitle")
 paragraph("Syed Muhammad Hanzala  |  12 November 2026")
 paragraph("I built a daily Airflow pipeline with Astro CLI to extract Frankfurter exchange rates, transform them into the required six-field format, and load them into MongoDB. Both manual verification runs completed successfully. All 29 tests passed, and the three stored records survived a MongoDB restart without changes.")
-link("Private GitHub repository  Hanzala-Shadow/mlops-task-3", REPOSITORY)
+link("Public GitHub repository  Hanzala-Shadow/mlops-task-3", REPOSITORY)
 
 heading("Implementation and configuration")
 table(["Component", "Implementation"], [
